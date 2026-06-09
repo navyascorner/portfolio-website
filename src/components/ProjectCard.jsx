@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="w-[300px]">
+    <div className="w-full max-w-[300px]">
       <Link
         to={`/projects/${project.id}`}
         className="group block"
@@ -17,12 +17,12 @@ export default function ProjectCard({ project }) {
         </div>
       </Link>
 
-      <div className="mt-4 flex items-center justify-center gap-2 text-xs">
+      <div className="mt-4 flex items-center justify-center gap-2 text-[11px] sm:text-xs">
         <a
           href={project.github}
           target="_blank"
           rel="noreferrer"
-          className="border border-black bg-white px-3 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white"
+          className="border border-black bg-white px-2 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white sm:px-3"
         >
           GitHub
         </a>
@@ -31,14 +31,14 @@ export default function ProjectCard({ project }) {
           href={project.demo}
           target="_blank"
           rel="noreferrer"
-          className="border border-black bg-white px-3 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white"
+          className="border border-black bg-white px-2 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white sm:px-3"
         >
           Try Here!
         </a>
 
         <Link
           to={`/projects/${project.id}`}
-          className="border border-black bg-white px-3 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white"
+          className="border border-black bg-white px-2 py-1 uppercase tracking-wide transition hover:bg-black hover:text-white sm:px-3"
         >
           Read More
         </Link>

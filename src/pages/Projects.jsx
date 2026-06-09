@@ -10,12 +10,12 @@ export default function Projects() {
             Navya Jain
           </p>
 
-          <h1 className="mt-3 text-6xl font-bold uppercase tracking-[0.25em] text-neutral-800 [font-family:'Open_Sans',sans-serif]">
+          <h1 className="mt-3 text-4xl font-bold uppercase tracking-[0.18em] text-neutral-800 [font-family:'Open_Sans',sans-serif] sm:text-5xl lg:text-6xl lg:tracking-[0.25em]">
             PROJECTS
           </h1>
         </header>
 
-        <section className="grid w-full grid-cols-3 justify-items-center gap-x-10 gap-y-14">
+        <section className="grid w-full grid-cols-1 justify-items-center gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-14">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
