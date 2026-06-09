@@ -6,6 +6,8 @@ export const projects = [
     image: `${import.meta.env.BASE_URL}book-recommendation.png`,
     github: "https://github.com/navyascorner/agentic-book-recommendation",
     demo: "",
+    homeDescription:
+     "it will come soon",
     description:
       "Coming soon",
   },
@@ -16,6 +18,8 @@ export const projects = [
     image: `${import.meta.env.BASE_URL}llm-scratch.png`,
     github: "https://github.com/navyascorner/llm-scratch",
     demo: "",
+    homeDescription:
+     "it will be here soon",
     description:
       "Coming soon",
   },
@@ -26,6 +30,8 @@ export const projects = [
     image: `${import.meta.env.BASE_URL}lane-detection.png`,
     github: "",
     demo: "",
+    homeDescription:
+     "soon",
     description:
       "",
   },
@@ -35,6 +41,8 @@ export const projects = [
     subtitle: "Tool-calling agent with confidence gates",
     image: `${import.meta.env.BASE_URL}multimodal.png`,
     github: "",
+    homeDescription:
+     "it will come soon",
     demo: "https://your-demo-link.com",
     description:
       "",
@@ -45,6 +53,8 @@ export const projects = [
     subtitle: "Training, evaluation, and deployment",
     image: `${import.meta.env.BASE_URL}adam-optimizer.png`,
     github: "",
+    homeDescription:
+     "it will come soon",
     demo: "",
     description:
       "",

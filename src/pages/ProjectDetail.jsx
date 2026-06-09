@@ -22,7 +22,7 @@ export default function ProjectDetail() {
     <main className="min-h-screen bg-[#E8D8F0] px-8 py-12">
       <article className="mx-auto max-w-5xl">
         <Link
-        to="/"
+        to="/projects"
         className="mb-8 inline-block border border-black bg-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-black hover:text-white"
         >
           Back
