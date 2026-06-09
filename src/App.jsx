@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -59,13 +59,24 @@ function PixelCursor() {
   );
 }
 
+function HomeRoute() {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get("page");
+
+  if (page === "projects") {
+    return <Navigate to="/projects" replace />;
+  }
+
+  return <Home />;
+}
+
 export default function App() {
   return (
     <HashRouter>
       <PixelCursor />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeRoute />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
       </Routes>
