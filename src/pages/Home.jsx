@@ -64,6 +64,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="mt-16 flex flex-col items-center gap-2 text-neutral-800">
+            <p className="text-xs uppercase tracking-[0.28em]">
+                Scroll down for more
+            </p>
+            <span className="animate-bounce text-2xl leading-none">↓</span>
+        </div>
       </section>
 
       {/* PROFESSIONAL EXPERIENCE */}
