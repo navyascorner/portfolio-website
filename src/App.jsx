@@ -1,12 +1,21 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 
 function PixelCursor() {
   const cursorRef = useRef(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    const touch =
+      window.matchMedia("(pointer: coarse)").matches ||
+      "ontouchstart" in window;
+
+    setIsTouchDevice(touch);
+
+    if (touch) return;
+
     const moveCursor = (event) => {
       if (!cursorRef.current) return;
 
@@ -39,6 +48,8 @@ function PixelCursor() {
       });
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <div ref={cursorRef} className="pixel-cursor">

@@ -86,3 +86,16 @@ button {
 .pixel-cursor.cursor-hover {
   transform: translate(-2px, -2px) scale(1.15);
 }
+
+@media (pointer: coarse) {
+  html,
+  body,
+  a,
+  button {
+    cursor: auto;
+  }
+
+  .pixel-cursor {
+    display: none;
+  }
+}
