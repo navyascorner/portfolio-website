@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: #e8d8f0;
+  color: #111;
+  cursor: none;
+}
+
+a,
+button {
+  cursor: none;
+}
+
+img {
+  display: block;
+}
+
+/* custom cursor */
+/* hide normal cursor */
+html,
+body,
+a,
+button {
+  cursor: none;
+}
+
+/* pixel fairy wand cursor */
+/* pixel wand cursor */
+/* hide normal cursor */
+html,
+body,
+a,
+button {
+  cursor: none;
+}
+
+/* pixel wand cursor */
+.pixel-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 99999;
+
+  /* aligns wand tip with real cursor */
+  transform: translate(-2px, -2px);
+}
+
+.wand-stick {
+  position: absolute;
+
+  /* this is the important fix */
+  left: 0px;
+  top: 0px;
+
+  width: 34px;
+  height: 5px;
+  background: #111;
+  transform: rotate(45deg);
+  transform-origin: left center;
+  image-rendering: pixelated;
+}
+
+.wand-stick::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+}
+
+.pixel-cursor.cursor-hover {
+  transform: translate(-2px, -2px) scale(1.15);
+}
