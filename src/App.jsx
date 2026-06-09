@@ -1,8 +1,22 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 function PixelCursor() {
   const cursorRef = useRef(null);
@@ -73,6 +87,7 @@ function HomeRoute() {
 export default function App() {
   return (
     <HashRouter>
+      <ScrollToTop />
       <PixelCursor />
 
       <Routes>
