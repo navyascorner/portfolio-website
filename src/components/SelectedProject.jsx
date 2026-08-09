@@ -26,32 +26,41 @@ export default function SelectedProject({ project, reverse = false }) {
           {project.title}
         </h3>
 
+        {project.subtitle && (
+          <p className="mt-2 text-xs uppercase tracking-[0.18em] text-neutral-700">
+            {project.subtitle}
+          </p>
+        )}
+
         <p className="mt-4 leading-7 text-neutral-800">
           {project.homeDescription}
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-wide hover:bg-black hover:text-white"
-          >
-            GitHub
-          </a>
+          {project.github && ( <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+            >
+              GitHub
+            </a>
+          )}
 
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noreferrer"
-            className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-wide hover:bg-black hover:text-white"
-          >
-            Try Here!
-          </a>
+          {project.demo && (<a
+            
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+            >
+              Try Here!
+            </a>
+          )}
 
           <Link
             to={`/projects/${project.id}`}
-            className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-wide hover:bg-black hover:text-white"
+            className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
           >
             Read More
           </Link>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Section from "../components/Section";
 import SocialButton from "../components/SocialButton";
 import SelectedProject from "../components/SelectedProject";
+import RichText from "../components/RichText";
 import { experience } from "../data/experience";
 import { education } from "../data/education";
 import { projects } from "../data/projects";
@@ -37,7 +38,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold">About Me</h2>
 
             <p className="mt-5 max-w-[940px] text-lg leading-8 text-neutral-800">
-              Hi, I am an AI/ML engineer with 2 years of experience and a Master’s degree in Artificial Intelligence.
+              Hi, I am an AI/ML engineer with over 2 years of experience and a Master’s degree in Artificial Intelligence.
               I build intelligent systems that are useful, reliable, and thoughtfully designed. My work spans agentic-systems, machine learning, backend engineering, LLM applications, recommendation systems, and production ML workflows.
               In my current role, along with other LLM-based and agentic projects, I built an end-to-end ML pipeline for a heavy-freight price prediction model that increased quarterly revenue by 25%, owning everything from data analysis and model selection to AWS deployment, logging and automatic model retraining.
               I’m especially interested in agentic AI, personalization, deep learning, and creative technical projects. Outside of work, I like reading, playing electric guitar, and aviation.
@@ -61,6 +62,12 @@ export default function Home() {
               <SocialButton href={`${import.meta.env.BASE_URL}resume.pdf`}>
                 Resume
               </SocialButton>
+              <Link
+              to="/projects"
+              className="border border-black bg-white px-8 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+              >
+                Check Out what I am Building here
+              </Link>
             </div>
           </div>
         </div>
@@ -72,27 +79,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROFESSIONAL EXPERIENCE */}
+{/* PROFESSIONAL EXPERIENCE */}
 <Section title="Professional Experience">
-  <div className="mx-auto max-w-3xl space-y-7">
-    {experience.map((item) => (
+  <div className="mx-auto max-w-3xl space-y-8">
+    {experience.map((companyItem) => (
       <article
-        key={`${item.role}-${item.company}`}
+        key={companyItem.company}
         className="border-l-2 border-black pl-5"
       >
         <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-700">
-          {item.date}
+          {companyItem.date}
         </p>
 
         <h3 className="mt-1.5 text-xl font-bold">
-          {item.role} at {item.company}
+          {companyItem.company}
         </h3>
 
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-6 text-neutral-800">
-          {item.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
+        <p className="mt-1 text-xs text-neutral-700">
+          {companyItem.location}
+        </p>
+
+        {companyItem.note && (
+          <p className="mt-3 text-sm italic text-neutral-700">
+            {companyItem.note}
+          </p>
+        )}
+
+        <div className="mt-5 space-y-6">
+          {companyItem.positions.map((position) => (
+            <div key={`${companyItem.company}-${position.role}`}>
+              <h4 className="text-base font-semibold">
+                {position.role}
+                <span className="ml-2 text-xs font-normal uppercase tracking-[0.16em] text-neutral-600">
+                  {position.date}
+                </span>
+              </h4>
+
+              {/* <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-6 text-neutral-800">
+                {position.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul> */}
+              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-6 text-neutral-800">
+                {position.bullets.map((bullet) => (
+                  <li key={bullet}>
+                    <RichText text={bullet} />
+                  </li>
+                ))}
+</ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </article>
     ))}
   </div>

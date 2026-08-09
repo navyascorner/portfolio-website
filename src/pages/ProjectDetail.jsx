@@ -3,79 +3,42 @@ import { projects } from "../data/projects";
 
 export default function ProjectDetail() {
   const { id } = useParams();
-  const project = projects.find((item) => item.id === id);
+  const project = projects.find((p) => p.id === id);
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-[#E8D8F0] px-8 py-12">
-        <div className="mx-auto max-w-3xl bg-white p-8">
-          <h1 className="text-4xl font-bold">Project not found</h1>
-          <Link to="/" className="mt-6 inline-block underline">
-            Back home
-          </Link>
-        </div>
+      <main className="min-h-screen bg-[#E8D8F0] px-8 py-10 text-neutral-950">
+        <p className="mb-4">Project not found.</p>
+        <Link
+          to="/projects"
+          className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+        >
+          Back
+        </Link>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#E8D8F0] px-8 py-12">
-      <article className="mx-auto max-w-5xl">
-        <Link
+    <main className="min-h-screen bg-[#E8D8F0] px-8 py-10 text-neutral-950 sm:px-12">
+      <Link
         to="/projects"
-        className="mb-8 inline-block border border-black bg-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-black hover:text-white"
-        >
-          Back
-        </Link>
+        className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+      >
+        Back
+      </Link>
 
-        <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
-          <div className="aspect-square overflow-hidden border-2 border-black bg-white">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-full w-full object-cover"
-            />
-          </div>
+      <div className="mx-auto mt-12 max-w-[900px]">
+        <p className="text-xs uppercase tracking-[0.25em] text-neutral-700">
+          Project
+        </p>
 
-          <section>
-            <p className="text-sm uppercase tracking-[0.35em] text-neutral-700">
-              Project
-            </p>
+        <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
+          {project.title}
+        </h1>
 
-            <h1 className="mt-3 font-display text-5xl font-black">
-              {project.title}
-            </h1>
-
-            <p className="mt-4 text-lg text-neutral-800">
-              {project.subtitle}
-            </p>
-
-            <p className="mt-8 leading-7 text-neutral-800">
-              {project.description}
-            </p>
-
-            <div className="mt-8 flex gap-3">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="border border-black bg-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-black hover:text-white"
-              >
-                GitHub
-              </a>
-
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="border border-black bg-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-black hover:text-white"
-              >
-                Try Here!
-              </a>
-            </div>
-          </section>
-        </div>
-      </article>
+        {/* ── design this page here ── */}
+      </div>
     </main>
   );
 }
