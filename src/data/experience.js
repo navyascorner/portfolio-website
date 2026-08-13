@@ -13,7 +13,7 @@ export const experience = [
           "Owned end-to-end machine learning pipelines with PyTorch and scikit-learn (regressors) to generate price estimations for transporting heavy hauls, increasing quarterly revenue by 20%",
           "Engineered 100+ time-series features and cached recent quotes for a LightGBM confidence model to score price prediction accuracy, enabling stakeholders to set risk thresholds and guardrails on automated quotes",
           "Added an LLM-based plausibility guardrail (Claude) to route flagged prices with the reasoning so that humans can accept or override before a price ships",
-          "Developed a LinUCB-based contextual bandit system in reinforcement learning, improving automated price accuracy by 35% while ensuring compliance with business-fairness policies",
+          "Developed a Thompson sampling contextual bandit for the pricing model from an 8-week, 5-arm randomized markup experiment, lifting margin per quote 12% vs. a permanent fixed-markup holdout",
           "Ran an online A/B test to measure the incremental impact of a new pricing model, establishing a statistically significant 37% lift in acceptance with no revenue degradation, where the incrementality read-out drove the go/no-go launch decision",
           "Built an evaluation harness for the agent using 50 time-split bidding scenarios to regression-test 15+ prompt versions for tool selection, failure handling, and multi-turn behavior",
           "Built a recommendation engine that suggested top 10 carriers for a load based on prior activity, achieving 0.87 Recall@10 and a 64% lift over a popularity baseline using matrix-factorization embeddings and weighted ranking",

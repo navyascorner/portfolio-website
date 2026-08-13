@@ -1,8 +1,13 @@
-import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import {
+  HashRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,16 +25,15 @@ function ScrollToTop() {
 
 function PixelCursor() {
   const cursorRef = useRef(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Evaluated once, before first paint — no extra render on mount.
+  const [isTouchDevice] = useState(
+    () =>
+      window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window
+  );
 
   useEffect(() => {
-    const touch =
-      window.matchMedia("(pointer: coarse)").matches ||
-      "ontouchstart" in window;
-
-    setIsTouchDevice(touch);
-
-    if (touch) return;
+    if (isTouchDevice) return;
 
     const moveCursor = (event) => {
       if (!cursorRef.current) return;
@@ -38,31 +42,35 @@ function PixelCursor() {
       cursorRef.current.style.top = `${event.clientY}px`;
     };
 
-    const addHover = () => {
-      cursorRef.current?.classList.add("cursor-hover");
+    // Delegated hover tracking: one pair of listeners on the document
+    // catches every <a> and <button>, including ones rendered later.
+    const handleOver = (event) => {
+      if (event.target.closest?.("a, button")) {
+        cursorRef.current?.classList.add("cursor-hover");
+      }
     };
 
-    const removeHover = () => {
+    const handleOut = (event) => {
+      const from = event.target.closest?.("a, button");
+      if (!from) return;
+
+      // Ignore moves between children of the same link/button.
+      const to = event.relatedTarget?.closest?.("a, button");
+      if (to === from) return;
+
       cursorRef.current?.classList.remove("cursor-hover");
     };
 
     window.addEventListener("mousemove", moveCursor);
-
-    const clickableElements = document.querySelectorAll("a, button");
-    clickableElements.forEach((element) => {
-      element.addEventListener("mouseenter", addHover);
-      element.addEventListener("mouseleave", removeHover);
-    });
+    document.addEventListener("mouseover", handleOver);
+    document.addEventListener("mouseout", handleOut);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-
-      clickableElements.forEach((element) => {
-        element.removeEventListener("mouseenter", addHover);
-        element.removeEventListener("mouseleave", removeHover);
-      });
+      document.removeEventListener("mouseover", handleOver);
+      document.removeEventListener("mouseout", handleOut);
     };
-  }, []);
+  }, [isTouchDevice]);
 
   if (isTouchDevice) return null;
 
@@ -73,17 +81,6 @@ function PixelCursor() {
   );
 }
 
-function HomeRoute() {
-  const params = new URLSearchParams(window.location.search);
-  const page = params.get("page");
-
-  if (page === "projects") {
-    return <Navigate to="/projects" replace />;
-  }
-
-  return <Home />;
-}
-
 export default function App() {
   return (
     <HashRouter>
@@ -91,9 +88,11 @@ export default function App() {
       <PixelCursor />
 
       <Routes>
-        <Route path="/" element={<HomeRoute />} />
+        <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetail />} />
+
+        {/* Unknown URLs fall back to Home instead of a blank page. */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
   );

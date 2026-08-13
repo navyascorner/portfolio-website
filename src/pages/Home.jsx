@@ -62,12 +62,13 @@ export default function Home() {
               <SocialButton href={`${import.meta.env.BASE_URL}resume.pdf`}>
                 Resume
               </SocialButton>
-              <Link
-              to="/projects"
-              className="border border-black bg-white px-8 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
-              >
+              <a
+                href={`${import.meta.env.BASE_URL}#/projects`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-black bg-white px-8 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white">
                 Check Out what I am Building here
-              </Link>
+              </a>
             </div>
           </div>
         </div>
