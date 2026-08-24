@@ -5,6 +5,6 @@ export const otherLinks = [
   },
   {
     image: `${import.meta.env.BASE_URL}book-reviews.png`,
-    link: "/bookshelf",
+    link: "/notebook",
   },
 ];

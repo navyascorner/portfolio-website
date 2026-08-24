@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
+import Notebook from "./pages/Notebook";
+import CurrentlyReading from "./pages/CurrentlyReading";
 import Projects from "./pages/Projects";
 
 function ScrollToTop() {
@@ -90,7 +92,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-
+        <Route path="/notebook" element={<Notebook />} />
+        <Route path="/currently-reading" element={<CurrentlyReading />} />
         {/* Unknown URLs fall back to Home instead of a blank page. */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
