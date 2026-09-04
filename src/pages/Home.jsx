@@ -9,7 +9,7 @@ import { projects } from "../data/projects";
 import { otherLinks } from "../data/otherLinks";
 
 export default function Home() {
-  const selectedProjects = projects.slice(0, 3);
+  const selectedProjects = projects.slice(0, 1);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-gradient-to-b from-[#E8D8F0] via-[#F0E6F5] to-[#FFF9FF] text-neutral-950">
@@ -53,10 +53,6 @@ export default function Home() {
 
               <SocialButton href="https://linkedin.com/in/navya45">
                 LinkedIn
-              </SocialButton>
-
-              <SocialButton href="mailto:iamjainnavya@gmail.com">
-                Email
               </SocialButton>
 
               <SocialButton href={`${import.meta.env.BASE_URL}resume.pdf`}>

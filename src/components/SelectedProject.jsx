@@ -1,14 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function SelectedProject({ project, reverse = false }) {
   const image = (
     <div className="mx-auto max-w-[340px] overflow-hidden border-2 border-black bg-white">
       <img
         src={project.image}
         alt={project.title}
-        className={`w-full object-contain ${
-          project.demo
-            ? "transition-transform duration-500 group-hover:scale-[1.03]"
-            : ""
-        }`}
+        className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
       />
     </div>
   );
@@ -19,19 +17,13 @@ export default function SelectedProject({ project, reverse = false }) {
         reverse ? "md:[&>*:first-child]:order-2" : ""
       }`}
     >
-      {project.demo ? (
-        <a
-          href={project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-          aria-label={`Try ${project.title}`}
-        >
-          {image}
-        </a>
-      ) : (
-        <div>{image}</div>
-      )}
+      <Link
+        to={`/projects/${project.id}`}
+        className="group block"
+        aria-label={`Read more about ${project.title}`}
+      >
+        {image}
+      </Link>
 
       <div>
         <p className="text-xs uppercase tracking-[0.25em] text-neutral-700">
@@ -53,6 +45,13 @@ export default function SelectedProject({ project, reverse = false }) {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            to={`/projects/${project.id}`}
+            className="border border-black bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:bg-black hover:text-white"
+          >
+            Details
+          </Link>
+
           {project.github && (
             <a
               href={project.github}

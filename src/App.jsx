@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Notebook from "./pages/Notebook";
 import CurrentlyReading from "./pages/CurrentlyReading";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/projectDetail";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -94,6 +95,7 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/notebook" element={<Notebook />} />
         <Route path="/currently-reading" element={<CurrentlyReading />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
         {/* Unknown URLs fall back to Home instead of a blank page. */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
